@@ -5,7 +5,7 @@ En cada rama se encuentra los push subidos por los diferentes compañeros que se
 
 ### Installation
 
-- Clonar el
+- Clonar el repo
 - Instalar Composer y NPM
 
         composer install && npm install
