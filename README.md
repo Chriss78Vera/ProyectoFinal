@@ -4,8 +4,8 @@ Dentro de este repositorio encontramos una página funcional sobre un sistema ca
 En cada rama se encuentra los push subidos por los diferentes compañeros que se encuentran en el grupo.
 
 # Installation
-*   Clonar el repo
-*   Instalar Composer y NPM
+* Clonar el repo
+* Instalar Composer y NPM
 
         composer install && npm install
         
