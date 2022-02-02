@@ -47,10 +47,16 @@
                             <span>{{ __('Director') }}</span>
                         </x-slot>
                         <x-slot name="content">
-                            <x-dropdown.simple.link>{{ __('List directors') }}</x-dropdown.simple.link>
-                            <x-dropdown.simple.link>{{ __('Create a new director') }}</x-dropdown.simple.link>
+
+                                <x-dropdown.simple.link :href="route('director.index')">
+                                {{ __('List directors') }}
+                            </x-dropdown.simple.link>
+                            <x-dropdown.simple.link :href="route('director.create')">
+                                {{ __('Create a new director') }}
+                            </x-dropdown.simple.link>
                         </x-slot>
                     </x-dropdown.simple.option>
+
 
                     <x-dropdown.simple.option class="w-full">
                         <x-slot name="header">
@@ -108,7 +114,7 @@
                                 <span class="text-current text-sm hidden sm:block">
                                     {{ Auth::user()->getFullName() }}
                                 </span>
-                                {{-- <x-user-avatar src="{{ Auth::user()->image->getUrl() }}" /> --}}
+                                <x-user-avatar src="{{ Auth::user()->image->getUrl() }}" />
                             </x-slot>
 
                             <x-slot name="content">
