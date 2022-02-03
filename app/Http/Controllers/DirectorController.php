@@ -16,7 +16,7 @@ class DirectorController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('can:manage-directors');
+        $this->middleware('can:manage-directors');
 
         $this->middleware('active.user')->only('edit', 'update');
 
