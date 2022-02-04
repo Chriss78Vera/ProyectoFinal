@@ -96,6 +96,26 @@
                     </x-dropdown.simple.option>
                     @endcan
 
+
+                    @can('manage-wards')
+                    <x-dropdown.simple.option class="w-full" :isActive="request()->routeIs('ward.*')">
+                        <x-slot name="header">
+                            <x-icons.warehouse/>
+                            <span>{{__("Wards")}}</span>
+                        </x-slot>
+                        <x-slot name="content">
+
+                            <x-dropdown.simple.link :href="route('ward.index')">
+                                {{ __('List wards') }}
+                            </x-dropdown.simple.link>
+
+                            <x-dropdown.simple.link :href="route('ward.create')">
+                                {{ __('Create a new ward') }}
+                            </x-dropdown.simple.link>
+                        </x-slot>
+                    </x-dropdown.simple.option>
+                @endcan
+
                 </nav>
             </div>
 

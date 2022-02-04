@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ward extends Model
 {
+
+    protected $fillable = ['name', 'location', 'description'];
+
+
     use HasFactory;
     public function jails(){
         return $this->hasMany(Jail::class);

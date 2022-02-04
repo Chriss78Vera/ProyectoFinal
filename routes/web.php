@@ -2,6 +2,7 @@
 use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\PrisonerController;
 use App\Http\Controllers\GuardController;
+use App\Http\Controllers\WardController;
 use App\Http\Controllers\Profile\PasswordController;
 use App\Http\Controllers\Profile\ProfileAvatarController;
 use App\Http\Controllers\Profile\ProfileInformationController;
@@ -54,6 +55,15 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::get('/guards/update/{user}', [GuardController::class, 'edit'])->name('guard.edit');
     Route::put('/guards/update/{user}', [GuardController::class, 'update'])->name('guard.update');
     Route::get('/guards/destroy/{user}', [GuardController::class, 'destroy'])->name('guard.destroy');
+
+    Route::get('/wards', [WardController::class, 'index'])->name('ward.index');
+    Route::get('/wards/create', [WardController::class, 'create'])->name('ward.create');
+    Route::post('/wards/create', [WardController::class, 'store'])->name('ward.store');
+    Route::get('/wards/{ward}', [WardController::class, 'show'])->name('ward.show');
+    Route::get('/wards/update/{ward}', [WardController::class, 'edit'])->name('ward.edit');
+    Route::put('/wards/update/{ward}', [WardController::class, 'update'])->name('ward.update');
+    Route::get('/wards/destroy/{ward}', [WardController::class, 'destroy'])->name('ward.destroy');
+
 });
 
 require __DIR__.'/auth.php';
