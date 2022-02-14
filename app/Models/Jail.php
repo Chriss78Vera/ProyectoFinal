@@ -7,16 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jail extends Model
 {
+
+    protected $fillable = ['name', 'code', 'type', 'capacity', 'ward_id','description'];
+
     use HasFactory;
 
-    public function ward(){
+    public function ward()
+    {
         return $this->belongsTo(Ward::class);
     }
 
-    public function users(){
+    public function users()
+    {
         return $this->belongsToMany(User::class)->withTimestamps();
     }
-    public function image(){
+
+    public function image()
+    {
         return $this->morphOne(Image::class,'imageable');
     }
+
+
 }

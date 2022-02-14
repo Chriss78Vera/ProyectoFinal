@@ -64,6 +64,19 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::put('/wards/update/{ward}', [WardController::class, 'update'])->name('ward.update');
     Route::get('/wards/destroy/{ward}', [WardController::class, 'destroy'])->name('ward.destroy');
 
+    Route::get('/jails', [JailController::class, 'index'])->name('jail.index');
+    Route::get('/jails/create', [JailController::class, 'create'])->name('jail.create');
+    Route::post('/jails/create', [JailController::class, 'store'])->name('jail.store');
+    Route::get('/jails/{jail}', [JailController::class, 'show'])->name('jail.show');
+    Route::get('/jails/update/{jail}', [JailController::class, 'edit'])->name('jail.edit');
+    Route::put('/jails/update/{jail}', [JailController::class, 'update'])->name('jail.update');
+    Route::get('/jails/destroy/{jail}', [JailController::class, 'destroy'])->name('jail.destroy');
+
+    Route::get('/assignment/prisoners-to-jails', [PrisionerJailController::class,'index'])->name('assignment.prisoners-jails.index');
+    Route::put('/assignment/prisoners-to-jails/{user}', [PrisionerJailController::class,'update'])->name('assignment.prisoners-jails.update');
+    Route::get('/assignment/guards-to-wards', [GuardWardController::class,'index'])->name('assignment.guards-wards.index');
+    Route::put('/assignment/guards-to-wards/{user}', [GuardWardController::class,'update'])->name('assignment.guards-wards.update');
+
 });
 
 require __DIR__.'/auth.php';

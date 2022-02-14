@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+
 use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -43,9 +44,22 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('manage-wards', function (User $user)
-         {
+        {
+           return $user->role->name === 'director';
+       });
+
+
+       Gate::define('manage-jails', function (User $user)
+       {
+           return $user->role->name === 'director';
+       });
+
+
+       Gate::define('manage-assignment', function (User $user)
+       {
             return $user->role->name === 'director';
-        });
+       });
+
 
     }
 }
