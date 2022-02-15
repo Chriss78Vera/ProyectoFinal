@@ -77,6 +77,13 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::get('/assignment/guards-to-wards', [GuardWardController::class,'index'])->name('assignment.guards-wards.index');
     Route::put('/assignment/guards-to-wards/{user}', [GuardWardController::class,'update'])->name('assignment.guards-wards.update');
 
+    Route::get('/reports', [ReportController::class, 'index'])->name('report.index');
+    Route::get('/reports/create', [ReportController::class, 'create'])->name('report.create');
+    Route::post('/reports/create', [ReportController::class, 'store'])->name('report.store');
+    Route::get('/reports/{report}', [ReportController::class, 'show'])->name('report.show');
+    Route::get('/reports/update/{report}', [ReportController::class, 'edit'])->name('report.edit');
+    Route::put('/reports/update/{report}', [ReportController::class, 'update'])->name('report.update');
+    Route::get('/reports/destroy/{report}', [ReportController::class, 'destroy'])->name('report.destroy');
 });
 
 require __DIR__.'/auth.php';
