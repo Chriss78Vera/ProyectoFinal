@@ -1,25 +1,20 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\ReportResource;
+use App\Models\Report;
+use Illuminate\Http\Request;
 
-class ReportResource extends JsonResource
+class ReportController extends Controller
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
-    public function toArray($request)
+    public function list_reports()
     {
-        return [
-            'title' => $this->title,
-            'author' => $this->user->getFullName(),
-            'description' => $this->description,
-            'image' => $this->image?->getUrl(),
-          //'address'=>$this->user->address
-        ];
+        // https://laravel.com/docs/8.x/eloquent-collections#introduction
+        $reports = Report::where('state', true)->get();
+
+        // https://laravel.com/docs/8.x/eloquent-resources#resource-collections
+        return ReportResource::collection($reports);
     }
 }

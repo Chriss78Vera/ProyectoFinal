@@ -6,20 +6,20 @@ use App\Http\Controllers\Api\WardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
 
+// https://laravel.com/docs/8.x/controllers#resource-controllers
 
-//Route::resource('wards', WardController::class);
-
-//php artisan route:list --compact
-// php artisan route:list --compact --path=api
-// Route::get('/wards',[WardController::class,'index']);
-// Route::post('/wards',[WardController::class,'store']);
-// Route::get('/wards/{ward}',[WardController::class,'show']);
-// Route::put('/wards/{ward}',[WardController::class,'update']);
-// Route::delete('/wards/{ward}',[WardController::class,'destroy']);
-
-
-
+// Route::resource('wards', WardController::class);
 
 
 // Public routes
