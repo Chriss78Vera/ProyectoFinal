@@ -42,7 +42,7 @@
                     <tr>
                         <x-table.td class=" space-x-3 whitespace-nowrap">
 
-                            <x-user-avatar class="hidden md:inline-flex" src="{{  $prisoner->image->getUrl() }}"/>
+                            {{-- <x-user-avatar class="hidden md:inline-flex" src="{{  $prisoner->image->getUrl() }}"/> --}}
 
                             <p class="inline-flex">{{ $prisoner->getFullName() }}</p>
 

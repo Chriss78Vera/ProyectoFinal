@@ -47,7 +47,7 @@
 
                         <x-table.td class=" space-x-3 whitespace-nowrap">
 
-                            <x-user-avatar class="hidden md:inline-flex" src="{{  $director->image->getUrl() }}"/>
+                            {{-- <x-user-avatar class="hidden md:inline-flex" src="{{  $director->image->getUrl() }}"/> --}}
 
 
                             <p class="inline-flex">{{ $director->getFullName() }}</p>

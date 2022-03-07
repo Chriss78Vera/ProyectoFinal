@@ -14,7 +14,7 @@
                 <div class="grid grid-cols-6 gap-6">
                     <!--Avatar-->
                     <div class="col-span-6 sm:col-span-3">
-                        <x-user-avatar class="w-24 h-24 md:w-20 md:h-20 mx-auto" :src="$guard->image->getUrl()"/>
+                        {{-- <x-user-avatar class="w-24 h-24 md:w-20 md:h-20 mx-auto" :src="$guard->image->getUrl()"/> --}}
                     </div>
 
                     <!--Username-->
