@@ -5,7 +5,7 @@ use App\Http\Controllers\GuardController;
 use App\Http\Controllers\GuardWardController;
 use App\Http\Controllers\JailController;
 use App\Http\Controllers\PrisonerController;
-use App\Http\Controllers\PrisonerJailController;
+use App\Http\Controllers\PrisionerJailController;
 use App\Http\Controllers\Profile\PasswordController;
 use App\Http\Controllers\Profile\ProfileAvatarController;
 use App\Http\Controllers\Profile\ProfileInformationController;
@@ -13,16 +13,26 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WardController;
 use Illuminate\Support\Facades\Route;
 
+
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
+
+
+
+
 Route::middleware(['auth', 'verified'])->group(function ()
 {
+
 
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+
 
     Route::get('/profile', [ProfileInformationController::class, 'edit'])->name('profile');
     Route::put('/profile', [ProfileInformationController::class, 'update'])->name('profile.update');
@@ -45,6 +55,7 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::put('/prisoners/update/{user}', [PrisonerController::class, 'update'])->name('prisoner.update');
     Route::get('/prisoners/destroy/{user}', [PrisonerController::class, 'destroy'])->name('prisoner.destroy');
 
+
     Route::get('/guards', [GuardController::class, 'index'])->name('guard.index');
     Route::get('/guards/create', [GuardController::class, 'create'])->name('guard.create');
     Route::post('/guards/create', [GuardController::class, 'store'])->name('guard.store');
@@ -61,6 +72,7 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::put('/wards/update/{ward}', [WardController::class, 'update'])->name('ward.update');
     Route::get('/wards/destroy/{ward}', [WardController::class, 'destroy'])->name('ward.destroy');
 
+
     Route::get('/jails', [JailController::class, 'index'])->name('jail.index');
     Route::get('/jails/create', [JailController::class, 'create'])->name('jail.create');
     Route::post('/jails/create', [JailController::class, 'store'])->name('jail.store');
@@ -69,10 +81,12 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::put('/jails/update/{jail}', [JailController::class, 'update'])->name('jail.update');
     Route::get('/jails/destroy/{jail}', [JailController::class, 'destroy'])->name('jail.destroy');
 
-    Route::get('/assignment/prisoners-to-jails', [PrisonerJailController::class,'index'])->name('assignment.prisoners-jails.index');
-    Route::put('/assignment/prisoners-to-jails/{user}', [PrisonerJailController::class,'update'])->name('assignment.prisoners-jails.update');
+
+    Route::get('/assignment/prisoners-to-jails', [PrisionerJailController::class,'index'])->name('assignment.prisoners-jails.index');
+    Route::put('/assignment/prisoners-to-jails/{user}', [PrisionerJailController::class,'update'])->name('assignment.prisoners-jails.update');
     Route::get('/assignment/guards-to-wards', [GuardWardController::class,'index'])->name('assignment.guards-wards.index');
     Route::put('/assignment/guards-to-wards/{user}', [GuardWardController::class,'update'])->name('assignment.guards-wards.update');
+
 
     Route::get('/reports', [ReportController::class, 'index'])->name('report.index');
     Route::get('/reports/create', [ReportController::class, 'create'])->name('report.create');
@@ -82,5 +96,11 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::put('/reports/update/{report}', [ReportController::class, 'update'])->name('report.update');
     Route::get('/reports/destroy/{report}', [ReportController::class, 'destroy'])->name('report.destroy');
 
+
+
 });
+
+
+
+
 require __DIR__.'/auth.php';

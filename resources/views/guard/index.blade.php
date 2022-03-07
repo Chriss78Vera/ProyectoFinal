@@ -42,7 +42,7 @@
                 @foreach($guards as $guard)
                     <tr>
                         <x-table.td class=" space-x-3 whitespace-nowrap">
-                            <x-user-avatar class="hidden md:inline-flex" src="{{  $guard->image->getUrl() }}"/>
+                            {{-- <x-user-avatar class="hidden md:inline-flex" src="{{  $guard->image->getUrl() }}"/> --}}
 
                             <p class="inline-flex">{{ $guard->getFullName() }}</p>
                         </x-table.td>
