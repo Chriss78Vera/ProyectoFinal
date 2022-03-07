@@ -15,7 +15,7 @@
 
             <!--User avatar-->
             <div class="col-span-6 sm:col-span-2">
-               <x-user-avatar class="w-24 h-24 md:w-28 md:h-28 mx-auto" :src="$user->image->getUrl()"/>
+               {<x-user-avatar class="w-24 h-24 md:w-28 md:h-28 mx-auto" :src="$user->image->getUrl()"/> --}}
             </div>
 
             <!--Image-->
