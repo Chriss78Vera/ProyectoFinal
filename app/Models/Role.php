@@ -9,7 +9,12 @@ class Role extends Model
 {
     use HasFactory;
 
-    public function users(){
+    // Relación de uno a muchos
+    // Un rol puede tener muchos usuarios
+    public function users()
+    {
         return $this->hasMany(User::class);
     }
+
+
 }

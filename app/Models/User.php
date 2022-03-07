@@ -12,8 +12,10 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
 
 class User extends Authenticatable implements MustVerifyEmail
+
+
 {
-    use HasApiTokens, HasFactory, Notifiable,HasImage;
+    use HasApiTokens, HasFactory, Notifiable, HasImage;
 
     /**
      * The attributes that are mass assignable.
@@ -33,61 +35,64 @@ class User extends Authenticatable implements MustVerifyEmail
         'birthdate',
     ];
 
-    // protected $hidden = [
-    //     'password',
-    //     'remember_token',
-    // ];
-
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 
 
-    public function role(){
+
+    // Relación de uno a muchos
+    // Un usuario le pertenece un rol
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
-    public function reports(){
+
+    // Relación de uno a muchos
+    // Un usuario puede realizar muchos reportes
+    public function reports()
+    {
         return $this->hasMany(Report::class);
     }
-    public function wards(){
+
+
+    // Relación de muchos a muchos
+    // Un usuario puede estar en varios pabellones
+    public function wards()
+    {
         return $this->belongsToMany(Ward::class)->withTimestamps();
     }
-    public function jails(){
+
+
+
+    // Relación de muchos a muchos
+    // Un usuario puede estar en varias cárceles
+    public function jails()
+    {
         return $this->belongsToMany(Jail::class)->withTimestamps();
     }
-    public function image(){
+
+
+
+    // Relación polimórfica uno a uno
+    // Un usuario pueden tener una imagen
+    public function image()
+    {
         return $this->morphOne(Image::class,'imageable');
     }
 
 
-    public function getFullName(): string
+    public function getFullName()
     {
         return "$this->first_name $this->last_name";
     }
 
-    public function getBirthdateAttribute($value): ?string
+
+
+    // Función para mejorar el formato de la fecha de nacimiento
+    public function getBirthdateAttribute($value)
     {
+        // https://laravel.com/docs/8.x/eloquent-mutators#accessors-and-mutators
         return isset($value) ? Carbon::parse($value)->format('d/m/Y') : null;
     }
+
 
 
 
@@ -124,9 +129,40 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-
     public function hasRole(string $role)
     {
         return $this->role->name === $role;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }
